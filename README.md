@@ -94,7 +94,7 @@ Expected output:
   - `results_table.csv` - Performance metrics
   - `*.joblib` - Trained models
 
-## 🔬 Methodology
+## Methodology
 
 ### Dataset
 - **Source**: METR-LA (Los Angeles traffic sensors)
@@ -149,8 +149,7 @@ This approach is ideal for:
 If you use this code, please cite:
 
 ```bibtex
-@inproceedings{author2026green,
-  title={Energy-Efficient Machine Learning for Traffic Congestion Prediction: A Green AI Approach for Smart Cities},
+@inproceedings{title={Energy-Efficient Machine Learning for Traffic Congestion Prediction: A Green AI Approach for Smart Cities},
   author={Madhu Sanku},
   booktitle={Proceedings of SASIGD 2026},
   year={2026}
