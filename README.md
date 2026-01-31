@@ -1,4 +1,4 @@
-# Green AI Traffic Congestion Prediction 🚦🌱
+# Green AI Traffic Congestion Prediction
 
 Energy-efficient machine learning for urban traffic congestion prediction. Complete reproducible implementation for **SASIGD 2026** paper.
 
@@ -11,9 +11,9 @@ Energy-efficient machine learning for urban traffic congestion prediction. Compl
 
 **Conference**: SASIGD 2026 - Sustainable AI and Social Impact for Global Development
 
-**Authors**: [Your Name]
+**Authors**: Madhu Sanku
 
-## 🎯 Quick Summary
+## Summary
 
 We compared 6 machine learning models for traffic congestion prediction on the METR-LA dataset (207 sensors, 34K samples). Key finding: **Lightweight models achieve 93% F1-score while using 18,000× less memory than KNN**.
 
@@ -21,16 +21,16 @@ We compared 6 machine learning models for traffic congestion prediction on the M
 
 | Model | Accuracy | F1-Score | Training Time | Inference Time | Model Size |
 |-------|----------|----------|---------------|----------------|------------|
-| **Naive Bayes** ⭐ | **0.9864** | **0.9345** | **0.14s** | **4.85×10⁻⁶s** | **7.19 KB** |
+| **Naive Bayes** | **0.9864** | **0.9345** | **0.14s** | **4.85×10⁻⁶s** | **7.19 KB** |
 | Logistic Regression | 0.9803 | 0.9063 | 0.49s | 5.35×10⁻⁷s | 2.44 KB |
 | Decision Tree | 0.9831 | 0.9201 | 2.73s | 5.05×10⁻⁷s | 6.95 KB |
 | Random Forest | 0.9837 | 0.9200 | 5.48s | 1.75×10⁻⁶s | 428.59 KB |
 | Gradient Boosting | 0.9841 | 0.9232 | 39.21s | 2.16×10⁻⁶s | 72.93 KB |
 | KNN | 0.9831 | 0.9183 | 0.011s | 9.21×10⁻⁵s | 44,551.78 KB |
 
-**⭐ Winner**: Naive Bayes - Best F1-score with minimal energy cost!
+Naive Bayes - Best F1-score with minimal energy cost!
 
-## 🚀 Quick Start
+## To Implement
 
 ### 1. Install Dependencies
 
@@ -152,15 +152,12 @@ If you use this code, please cite:
 ```bibtex
 @inproceedings{author2026green,
   title={Energy-Efficient Machine Learning for Traffic Congestion Prediction: A Green AI Approach for Smart Cities},
-  author={[Your Name]},
+  author={Madhu Sanku},
   booktitle={Proceedings of SASIGD 2026},
   year={2026}
 }
 ```
 
-## 📝 License
-
-MIT License - see LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
@@ -172,10 +169,6 @@ MIT License - see LICENSE file for details.
 
 For questions:
 - Open an issue in this repository
-- Email: [your-email@example.com]
+- Email: [sankumadhu88@gmail.com]
 
 ---
-
-**Keywords**: Green AI · Traffic Prediction · Smart Cities · Energy-Efficient ML · Sustainable Computing · METR-LA
-
-**Status**: ✅ Reproducible | ✅ Ready for SASIGD 2026
