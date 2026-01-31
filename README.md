@@ -5,7 +5,7 @@ Energy-efficient machine learning for urban traffic congestion prediction. Compl
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📄 Paper
+## Paper
 
 **Title**: Energy-Efficient Machine Learning for Traffic Congestion Prediction: A Green AI Approach for Smart Cities
 
@@ -86,7 +86,7 @@ Expected output:
 ✓✓✓ ALL RESULTS VERIFIED SUCCESSFULLY! ✓✓✓
 ```
 
-## 📁 Files
+## Files
 
 - **`traffic_prediction.py`** - Main implementation (all 6 models)
 - **`verify_reproducibility.py`** - Verification script
@@ -122,30 +122,30 @@ All models use scikit-learn with default hyperparameters except:
 - **Performance**: Accuracy, F1-Score
 - **Energy Proxies**: Training time, inference time, model size
 
-## 💡 Key Insights
+## Key Insights
 
 1. **Lightweight models are competitive**: F1-score within 2% of ensemble methods
 2. **Massive efficiency gains**: 18,000× smaller than KNN, <1s training
 3. **Ideal for edge deployment**: Sub-microsecond inference, <8 KB storage
 4. **Green AI validated**: High performance ≠ high energy cost
 
-## 📊 Use Cases
+## Use Cases
 
 This approach is ideal for:
-- ✅ Edge devices with limited resources
-- ✅ Real-time traffic management systems  
-- ✅ Frequent model retraining scenarios
-- ✅ Large-scale smart city deployments
-- ✅ Energy-conscious AI applications
+- Edge devices with limited resources
+- Real-time traffic management systems  
+- Frequent model retraining scenarios
+- Large-scale smart city deployments
+- Energy-conscious AI applications
 
-## 🔧 Requirements
+## Requirements
 
 - Python 3.8+
 - 8GB RAM (minimum)
 - 500MB disk space
 - Libraries: h5py, numpy, pandas, scikit-learn, joblib
 
-## 📖 Citation
+## Citation
 
 If you use this code, please cite:
 
@@ -159,13 +159,13 @@ If you use this code, please cite:
 ```
 
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Dataset**: METR-LA from Kaggle ([link](https://www.kaggle.com/datasets/madmuthu/metr-la))
 - **Inspiration**: Li et al. (ICLR 2018), Schwartz et al. (CACM 2020)
 - **Conference**: SASIGD 2026
 
-## 📧 Contact
+## Contact
 
 For questions:
 - Open an issue in this repository
