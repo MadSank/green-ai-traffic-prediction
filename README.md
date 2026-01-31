@@ -3,7 +3,6 @@
 Energy-efficient machine learning for urban traffic congestion prediction. Complete reproducible implementation for **SASIGD 2026** paper.
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Paper
 
