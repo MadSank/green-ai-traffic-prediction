@@ -1,14 +1,3 @@
-"""
-Traffic Congestion Prediction using Machine Learning
-Green AI Approach for Smart Cities
-
-Author: [Your Name]
-Paper: Energy-Efficient Machine Learning for Traffic Congestion Prediction
-Conference: SASIGD 2026
-
-This script reproduces all results from Table I in the paper.
-"""
-
 import h5py
 import numpy as np
 import pandas as pd
@@ -37,9 +26,6 @@ print("=" * 80)
 print("Traffic Congestion Prediction - Green AI Implementation")
 print("=" * 80)
 
-# ============================================================================
-# STEP 1: Load Data
-# ============================================================================
 print("\n[1/6] Loading METR-LA dataset...")
 try:
     with h5py.File(DATA_PATH, 'r') as f:
@@ -47,18 +33,15 @@ try:
         columns = [c.decode('utf-8') for c in f['df']['axis0'][:]]
     
     df = pd.DataFrame(data, columns=columns)
-    print(f"✓ Dataset loaded: {df.shape[0]} samples, {df.shape[1]} sensors")
+    print(f"Dataset loaded: {df.shape[0]} samples, {df.shape[1]} sensors")
 except FileNotFoundError:
-    print(f"❌ ERROR: Dataset file '{DATA_PATH}' not found!")
+    print(f"ERROR: Dataset file '{DATA_PATH}' not found!")
     print("\nPlease download the METR-LA dataset:")
     print("1. Visit: https://www.kaggle.com/datasets/madmuthu/metr-la")
     print("2. Download 'metr-la.h5'")
     print(f"3. Place it in the same folder as this script")
     exit(1)
 
-# ============================================================================
-# STEP 2: Feature Engineering
-# ============================================================================
 print("\n[2/6] Creating features and labels...")
 
 # Rename columns for clarity
@@ -77,9 +60,6 @@ print(f"  Free-flow (0): {(df['congestion'] == 0).sum()} samples " +
 print(f"  Congestion (1): {(df['congestion'] == 1).sum()} samples " +
       f"({100 * (df['congestion'] == 1).sum() / len(df):.2f}%)")
 
-# ============================================================================
-# STEP 3: Temporal Split (Prevent Label Leakage)
-# ============================================================================
 print("\n[3/6] Creating temporal train-test split...")
 
 # Features at time t
@@ -102,9 +82,6 @@ y_test = y.iloc[split_idx:]
 print(f"✓ Training set: {len(X_train)} samples")
 print(f"✓ Test set: {len(X_test)} samples")
 
-# ============================================================================
-# STEP 4: Feature Scaling
-# ============================================================================
 print("\n[4/6] Applying StandardScaler...")
 
 scaler = StandardScaler()
@@ -113,9 +90,6 @@ X_test_scaled = scaler.transform(X_test)
 
 print(f"✓ Features scaled to zero mean and unit variance")
 
-# ============================================================================
-# STEP 5: Model Training and Evaluation
-# ============================================================================
 print("\n[5/6] Training and evaluating models...")
 print("-" * 80)
 
@@ -165,9 +139,6 @@ for name, model in models.items():
     # Store results
     results.append([name, acc, f1, train_time, inf_time, model_size])
 
-# ============================================================================
-# STEP 6: Save Results
-# ============================================================================
 print("\n[6/6] Saving results...")
 
 # Create results DataFrame
@@ -185,27 +156,20 @@ results_df = pd.DataFrame(
 
 # Save to CSV
 results_df.to_csv(f"{RESULTS_DIR}/results_table.csv", index=False)
-print(f"✓ Results saved to {RESULTS_DIR}/results_table.csv")
+print(f"Results saved to {RESULTS_DIR}/results_table.csv")
 
-# ============================================================================
-# FINAL RESULTS SUMMARY
-# ============================================================================
 print("\n" + "=" * 80)
 print("FINAL RESULTS")
 print("=" * 80 + "\n")
 print(results_df.to_string(index=False))
 print("\n" + "=" * 80)
-print("✓ Experiment completed successfully!")
+print("Experiment completed successfully!")
 print("=" * 80)
 
-print("\n📊 Key Findings:")
+print("\n Key Findings:")
 print(f"• Best F1-Score: {results_df['F1 Score'].max():.4f} " +
       f"({results_df.loc[results_df['F1 Score'].idxmax(), 'Model']})")
 print(f"• Fastest Training: {results_df['Training Time (s)'].min():.4f}s " +
       f"({results_df.loc[results_df['Training Time (s)'].idxmin(), 'Model']})")
 print(f"• Smallest Model: {results_df['Model Size (KB)'].min():.2f} KB " +
       f"({results_df.loc[results_df['Model Size (KB)'].idxmin(), 'Model']})")
-
-print("\n💡 Green AI Recommendation:")
-print("   Naive Bayes achieves 93.45% F1-score with only 0.14s training time")
-print("   and 7.19 KB model size - ideal for edge deployment!")
