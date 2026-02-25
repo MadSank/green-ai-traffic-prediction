@@ -6,7 +6,7 @@ Energy-efficient machine learning for urban traffic congestion prediction. Compl
 
 ## Paper
 
-**Title**: Energy-Efficient Machine Learning for Traffic Congestion Prediction: A Green AI Approach for Smart Cities
+**Title**: Lightweight Machine Learning Models for Urban Traffic Prediction: Balancing Accuracy with Computational Constraints in Smart City Deployments
 
 **Conference**: SASIGD 2026 - Sustainable AI and Social Impact for Global Development
 
