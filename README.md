@@ -45,7 +45,7 @@ pip install h5py==3.9.0 numpy==1.24.3 pandas==2.0.3 scikit-learn==1.3.0 joblib==
 
 ### 2. Download Dataset
 
-1. Visit: [METR-LA on Kaggle](https://www.kaggle.com/datasets/madmuthu/metr-la)
+1. Visit: [METR-LA on Kaggle](https://www.kaggle.com/datasets/annnnguyen/metr-la-dataset)
 2. Download `metr-la.h5` 
 3. Place it in the same folder as the Python scripts
 
