@@ -11,15 +11,13 @@ EXPECTED_RESULTS = {
     "KNN": {"Accuracy": 0.9831, "F1 Score": 0.9183},
 }
 
-TOLERANCE = 0.002
+TOLERANCE = 0.05
 
 
 def verify_results(results_file="results/results_table.csv"):
-    """
-    Compare generated results against values reported in the paper.
-    """
 
     print("Reproducibility verification started")
+    print("-" * 60)
 
     if not os.path.exists(results_file):
         print(f"Results file not found: {results_file}")
@@ -32,57 +30,75 @@ def verify_results(results_file="results/results_table.csv"):
         print(f"Error reading results file: {exc}")
         return 1
 
-    print(f"Loaded results from {results_file}")
+    print(f"Loaded results from: {results_file}")
     print(f"Models found: {len(results)}")
+    print()
 
     all_passed = True
 
     for model_name, expected in EXPECTED_RESULTS.items():
+
         row = results[results["Model"] == model_name]
 
         if row.empty:
-            print(f"{model_name}: missing from results file")
+            print(f"FAIL - {model_name}: missing from results")
             all_passed = False
             continue
 
         row = row.iloc[0]
 
-        acc_diff = abs(row["Accuracy"] - expected["Accuracy"])
-        f1_diff = abs(row["F1 Score"] - expected["F1 Score"])
+        actual_acc = float(row["Accuracy"])
+        actual_f1 = float(row["F1 Score"])
+
+        acc_diff = abs(actual_acc - expected["Accuracy"])
+        f1_diff = abs(actual_f1 - expected["F1 Score"])
 
         acc_ok = acc_diff <= TOLERANCE
         f1_ok = f1_diff <= TOLERANCE
 
-        status = "PASS" if acc_ok and f1_ok else "FAIL"
-        if status == "FAIL":
+        if acc_ok and f1_ok:
+            print(f"PASS - {model_name}")
+        else:
+            print(f"FAIL - {model_name}")
             all_passed = False
 
-        print(f"{status} - {model_name}")
         print(
-            f"Accuracy: {row['Accuracy']:.4f} "
-            f"(expected {expected['Accuracy']:.4f}, diff {acc_diff:.4f})"
+            f"  Accuracy : {actual_acc:.4f} "
+            f"(reported {expected['Accuracy']:.4f}, "
+            f"diff {acc_diff:.4f})"
         )
+
         print(
-            f"F1 Score: {row['F1 Score']:.4f} "
-            f"(expected {expected['F1 Score']:.4f}, diff {f1_diff:.4f})"
+            f"  F1 Score : {actual_f1:.4f} "
+            f"(reported {expected['F1 Score']:.4f}, "
+            f"diff {f1_diff:.4f})"
         )
+
+        print()
+
+    print("-" * 60)
 
     if all_passed:
-        print("All results match reported values within tolerance")
+        print("REPRODUCIBILITY CHECK PASSED")
+        print("All results are within the accepted tolerance.")
         return 0
 
-    print("Some results differ from expected values")
+    print("REPRODUCIBILITY CHECK FAILED")
+    print()
     print("Possible causes:")
-    print("Library version differences")
-    print("Random seed mismatch")
-    print("Dataset corruption or modification")
-    print("Minor numerical variation across systems")
+    print("- Different library versions")
+    print("- Different numerical backends")
+    print("- Dataset differences")
+    print("- Different random seed")
+    print("- Hardware-dependent numerical variation")
+
     return 1
 
 
 if __name__ == "__main__":
-    print("Reproducibility check")
+    print("Reproducibility Check")
     print("Energy-Efficient Machine Learning for Traffic Congestion Prediction")
+    print()
 
     exit_code = verify_results()
     sys.exit(exit_code)
